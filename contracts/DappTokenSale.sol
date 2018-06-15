@@ -17,6 +17,9 @@ contract DappTokenSale {
     }
 
     function multiply(uint x, uint y) internal pure returns (uint z) {
+        //ds-math
+        // internal = for internal function of this contact and not accessable from out of the scope
+        // pure = its not acctully readying data from blockchain and its just a pure function.
         require(y == 0 || (z = x * y) / y == x);
     }
 

@@ -30,7 +30,7 @@ App = {
       App.contracts.DappTokenSale = TruffleContract(dappTokenSale);
       App.contracts.DappTokenSale.setProvider(App.web3Provider);
       App.contracts.DappTokenSale.deployed().then(function(dappTokenSale) {
-        console.log("Dapp Token Sale Address:", dappTokenSale.address);
+        console.log("Dapp Token Sales Address:", dappTokenSale.address);
       });
     }).done(function() {
       $.getJSON("DappToken.json", function(dappToken) {
@@ -53,9 +53,16 @@ App = {
         fromBlock: 0,
         toBlock: 'latest',
       }).watch(function(error, event) {
+
         console.log("event triggered", event);
+        switch(event.event){
+          case "Sell":
+            console.log("--> Sell Event Triggered");
+            break;
+        }
         App.render();
       })
+
     })
     
   },
@@ -78,13 +85,21 @@ App = {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
       }
-    })
+    });
+
+    
+
+    var dappTokenSaleInstance;
 
     App.contracts.DappTokenSale.deployed().then(function(instance){
       dappTokenSaleInstance = instance;
+      return dappTokenSaleInstance.address;
+    }).then(function(address){
+      $('#contractAddress').html('Contract Address: '+ address);
       return dappTokenSaleInstance.tokenPrice();
     }).then(function(tokenPrice){
       App.tokenPrice = tokenPrice;
+      //console.log("-->", web3.fromWei(App.tokenPrice, "ether").toNumber());
       $('.token-price').html(web3.fromWei(App.tokenPrice, "ether").toNumber());
       return dappTokenSaleInstance.tokenSold();
     }).then(function(tokensSold) {
@@ -101,6 +116,9 @@ App = {
         return dappTokenInstance.balanceOf(App.account);
       }).then(function(balance) {
         $('.dapp-balance').html(balance.toNumber());
+        return dappTokenInstance.name();
+      }).then(function(tokenanme){
+        $('.dapp-name').html(tokenanme);
         App.loading = false;
         loader.hide();
         content.show();
@@ -113,16 +131,24 @@ App = {
     $('#content').hide();
     $('#loader').show();
     var numberOfTokens = $('#numberOfTokens').val();
+    var dapont;
     App.contracts.DappTokenSale.deployed().then(function(instance) {
-      return instance.buyTokens(numberOfTokens, {
+      dapont = instance;
+      return dapont.address;
+    }).then(function(addr){
+      console.log("Test Addresss: ", addr);
+      return dapont.buyTokens(numberOfTokens, {
         from: App.account,
         value: numberOfTokens * App.tokenPrice,
-        gas: 500000 // Gas limit
+        gas: 500000
       });
     }).then(function(result) {
       console.log("Tokens bought...")
       $('form').trigger('reset') // reset number of tokens in form
       // Wait for Sell event
+
+      //$('#loader').hide();
+      //$('#content').show();
     });
   }
 }

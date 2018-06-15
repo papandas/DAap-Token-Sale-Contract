@@ -7,11 +7,11 @@ contract('Dapp Token', function(accounts){
             tokenInstance = instance;
             return tokenInstance.totalSupply();
         }).then(function(token){
-            console.log("Total Token: ", token.toNumber());
+            //console.log("Total Token: ", token.toNumber());
             assert.equal(token.toNumber(), 1000000, 'Is correct!');
             return tokenInstance.balanceOf(accounts[0]);
         }).then(function(balance){
-            console.log("Balance for ", accounts[0], " is ", balance.toNumber());
+            //console.log("Balance for ", accounts[0], " is ", balance.toNumber());
             assert.equal(balance.toNumber(), 1000000, "Correct");
         });
     });
@@ -31,11 +31,11 @@ contract('Dapp Token', function(accounts){
             assert.equal(receipt.logs[0].args._value, 100000, "checking from transer value"); 
             return tokenInstance.balanceOf(accounts[0]);
         }).then(function(balance){
-            console.log("Balance for ", accounts[0], " is ", balance.toNumber());
+            //console.log("Balance for ", accounts[0], " is ", balance.toNumber());
             //assert.equal(balance.toNumber(), 1000000, "reduices from Sender");
             return tokenInstance.balanceOf(accounts[1]);
         }).then(function(balance){
-            console.log("Balance for ", accounts[1], " is ", balance.toNumber());
+            //console.log("Balance for ", accounts[1], " is ", balance.toNumber());
             //assert.equal(balance.toNumber(), 1000000, "add to the receiver");
         });
     });
@@ -46,7 +46,7 @@ contract('Dapp Token', function(accounts){
             tokenInstance = instance;
             return tokenInstance.approve.call(accounts[0], 25000);
         }).then(function(success){
-            console.log(success);
+            //console.log(success);
             assert.equal(success, true, "It returns True");
             return tokenInstance.approve(accounts[1], 500, {from: accounts[0]});
         }).then(function(receipt){
@@ -78,16 +78,16 @@ contract('Dapp Token', function(accounts){
         }).then(function(receipt){
             return tokenInstance.balanceOf(accounts[0]);
         }).then(function(balance){
-            console.log("Balance for accounts[0] is ", balance.toNumber());
+            //console.log("Balance for accounts[0] is ", balance.toNumber());
             return tokenInstance.balanceOf(accounts[2]);
         }).then(function(balance){
-            console.log("Balance for accounts[2]/fromAccount is ", balance.toNumber());
+            //console.log("Balance for accounts[2]/fromAccount is ", balance.toNumber());
             return tokenInstance.balanceOf(accounts[3]);
         }).then(function(balance){
-            console.log("Balance for accounts[3]/toAccount is ", balance.toNumber());
+            //console.log("Balance for accounts[3]/toAccount is ", balance.toNumber());
             return tokenInstance.balanceOf(accounts[4]);
         }).then(function(balance){
-            console.log("Balance for accounts[4]/spendingAccount is ", balance.toNumber());
+            //console.log("Balance for accounts[4]/spendingAccount is ", balance.toNumber());
             //return tokenInstance.balanceOf(accounts[2]);
         });
     });

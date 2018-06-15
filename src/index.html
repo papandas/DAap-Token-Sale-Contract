@@ -7,23 +7,27 @@
     <title>DApp Token ICO Sale</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Song+Myung" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-            <h1 class="text-center">DAPP TOKEN ICO SALE</h1>
+            <h1 class="text-center">DAPP TOKEN-SALE SMART-CONTRACT</h1>
+            <h5 class="text-center">Deployed on Rinkeby Test Ethereum Network. 
+              Use a browser extension like Metamask to connect to the test netowrk and 
+              participate in the token sale smart contract. 
+              Please be patiesnt if the network is running slow.</h5>
             <hr/>
             <br/>
         </div>
         <div id="loader">
           <p class="text-center">Loading...</p>
         </div>
-        <div id="content" class="text-center" style="display: none;">
-          <p>
-            Introducing "DApp Token" (DAPP)!
-            Token price is <span class="token-price"></span> Ether. You currently have <span class="dapp-balance"></span>&nbsp;DAPP.
-          </p>
+        <div id="content" class="text-center" style="display:none;">
+          <p>Token price is <span class="token-price">00</span> Ether.</p>
+          <p>You currently have <span class="dapp-balance"></span>&nbsp;<span class="dapp-name"></span></p>
           <br/>
           <form onSubmit="App.buyTokens(); return false;" role="form">
             <div class="form-group">
@@ -43,7 +47,9 @@
             </div>
           <p><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</p>
           <hr>
-          <p id="accountAddress"></p>
+          <p id="accountAddress">Account Address</p>
+          <p id="contractAddress">Contract Address</p>
+          <p id="githubAddress">Check out the Source Code on <a href="https://github.com/papandas/DAap-Token-Sale-Contract">GitHub</a> here!</p>
         </div>
       </div>
     </div>
@@ -52,6 +58,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.min.js"></script>
-    <script src="js/app.js"></script>
+    <!-- --><script src="js/app.js"></script>
   </body>
 </html>

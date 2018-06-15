@@ -16,12 +16,15 @@ contract('DappTokenSale', function(accounts){
             tokenSaleInstance = instance;
             return tokenSaleInstance.address;
         }).then(function(address){
+            console.log(address);
             assert.notEqual(address, 0x0, "Has contract addresss");
             return tokenSaleInstance.tokenContract();
         }).then(function(address){
+            console.log(address);
             assert.notEqual(address, 0x0, "Has contract address");
             return tokenSaleInstance.tokenPrice();
         }).then(function(price){
+            console.log(price);
             assert.equal(price, tokenPrice, "token price is correct.")
         });
     });
@@ -95,4 +98,6 @@ contract('DappTokenSale', function(accounts){
             assert.equal(balance.toNumber(), 0, "Contract balance Checking.");
         })
     });
+
+    
 });
