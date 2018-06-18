@@ -11,8 +11,8 @@
     "build": "webpack",
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ipfs":"ipscend --",
-    "deploy":"ipscend publish"
+    "ipfs": "ipscend --",
+    "deploy": "ipscend publish"
   },
   "author": "Papan Das",
   "license": "ISC",
@@ -24,5 +24,8 @@
     "lite-server": "^2.3.0",
     "webpack": "^4.8.1",
     "webpack-cli": "^2.1.3"
+  },
+  "dependencies": {
+    "ipfs": "^0.29.3"
   }
 }

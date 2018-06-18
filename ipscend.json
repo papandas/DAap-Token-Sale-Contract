@@ -7,6 +7,11 @@
       "protocol": "https"
     }
   },
-  "versions": [],
-  "path": "public"
+  "versions": [
+    {
+      "hash": "",
+      "timestamp": "2018-06-18T12:00:23.140Z"
+    }
+  ],
+  "path": "docs"
 }
