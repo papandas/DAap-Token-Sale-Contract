@@ -30,14 +30,14 @@ App = {
       App.contracts.DappTokenSale = TruffleContract(dappTokenSale);
       App.contracts.DappTokenSale.setProvider(App.web3Provider);
       App.contracts.DappTokenSale.deployed().then(function(dappTokenSale) {
-        console.log("Dapp Token Sales Address:", dappTokenSale.address);
+        //console.log("Dapp Token Sales Address:", dappTokenSale.address);
       });
     }).done(function() {
       $.getJSON("DappToken.json", function(dappToken) {
         App.contracts.DappToken = TruffleContract(dappToken);
         App.contracts.DappToken.setProvider(App.web3Provider);
         App.contracts.DappToken.deployed().then(function(dappToken) {
-          console.log("Dapp Token Address:", dappToken.address);
+          //console.log("Dapp Token Address:", dappToken.address);
         });
 
         App.listenForEvents();
@@ -95,7 +95,7 @@ App = {
       dappTokenSaleInstance = instance;
       return dappTokenSaleInstance.address;
     }).then(function(address){
-      $('#contractAddress').html('Contract Address: '+ address);
+      $('#contractAddress').html('Contract Address: <a href="https://rinkeby.etherscan.io/address/'+address+'" target="_blank">'+ address + '</a>');
       return dappTokenSaleInstance.tokenPrice();
     }).then(function(tokenPrice){
       App.tokenPrice = tokenPrice;
