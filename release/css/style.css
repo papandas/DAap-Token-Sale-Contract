@@ -1,0 +1,12 @@
+body, h1{
+    font-family: 'Song Myung', serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.token-price, .dapp-name, .dapp-balance{
+    font-weight: bold;
+}
+
+#contractAddress{
+    color: green;
+}
