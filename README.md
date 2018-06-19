@@ -4,6 +4,7 @@ Visit the demo [Demo at GitHub](https://papandas.github.io/DAap-Token-Sale-Contr
 
 
 I have created a completely new cryptocurrency called **PAPAN TOKEN** or **PAP*** on top of Ethereum Blockchain using Solidity Programming Language with the below features.
+- ERC20 Standard token.
 - Token is called **PAPAN TOKEN** and with known symbol as **PAP**
 - The smart-contract has initial supply of 1000000 Tokens.
 - Users can transfer the tokens to another people’s account.
